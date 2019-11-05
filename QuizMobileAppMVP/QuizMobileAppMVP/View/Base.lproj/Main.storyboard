@@ -35,7 +35,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Insert Word" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ITW-5s-JJt" customClass="WordTextField" customModule="QuizMobileAppMVP" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Insert Word" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ITW-5s-JJt" customClass="WordTextField" customModule="QuizMobileAppMVP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="97.5" width="288" height="48"/>
                                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -57,7 +57,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pur-dE-BaV">
-                                                            <rect key="frame" x="15" y="11" width="258" height="20.5"/>
+                                                            <rect key="frame" x="8" y="11" width="265" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -72,12 +72,12 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="4AG-en-dAU" firstAttribute="leading" secondItem="wcF-BG-D3e" secondAttribute="leading" id="7Up-d5-JyJ"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="Pur-dE-BaV" secondAttribute="trailing" id="KIi-1m-PUq"/>
+                                                        <constraint firstItem="Pur-dE-BaV" firstAttribute="trailing" secondItem="wcF-BG-D3e" secondAttribute="trailingMargin" id="JgH-Mz-Mn5"/>
                                                         <constraint firstItem="Pur-dE-BaV" firstAttribute="top" secondItem="wcF-BG-D3e" secondAttribute="topMargin" id="N0s-7c-1mG"/>
+                                                        <constraint firstItem="Pur-dE-BaV" firstAttribute="leading" secondItem="4AG-en-dAU" secondAttribute="leadingMargin" id="e4L-Yi-egY"/>
                                                         <constraint firstAttribute="bottom" secondItem="4AG-en-dAU" secondAttribute="bottom" id="gin-r7-zrs"/>
                                                         <constraint firstAttribute="trailing" secondItem="4AG-en-dAU" secondAttribute="trailing" id="lSl-MY-Q58"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="Pur-dE-BaV" secondAttribute="bottom" id="tpz-4j-lb2"/>
-                                                        <constraint firstItem="Pur-dE-BaV" firstAttribute="leading" secondItem="wcF-BG-D3e" secondAttribute="leadingMargin" id="y2r-Up-bEW"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -163,10 +163,10 @@
                     <connections>
                         <outlet property="bottomButton" destination="Afs-mf-a9b" id="xHo-LJ-i1z"/>
                         <outlet property="bottomContainerConstraint" destination="kfk-Aw-2jT" id="Gxv-5O-9hk"/>
-                        <outlet property="bottomContainerView" destination="ZFl-cj-352" id="mev-Xd-HoP"/>
                         <outlet property="questionLabel" destination="95k-cD-kpF" id="4pX-4z-kMB"/>
                         <outlet property="scoreLabel" destination="uIA-vE-bBo" id="y2P-Oe-Pmf"/>
                         <outlet property="timerLabel" destination="co1-zr-nH3" id="3fP-Ge-8Yg"/>
+                        <outlet property="topStackView" destination="9g1-Ys-GL2" id="OhJ-Hb-Gtl"/>
                         <outlet property="wordTextField" destination="ITW-5s-JJt" id="ibL-5j-6It"/>
                         <outlet property="wordsTableView" destination="L6u-qC-CcZ" id="I2s-Zl-IGh"/>
                     </connections>

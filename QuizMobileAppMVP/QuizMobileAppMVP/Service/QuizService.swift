@@ -12,22 +12,24 @@ class QuizService {
     
     private let fetchQuizEndpoint = "https://codechallenge.arctouch.com/quiz/1"
     
-    func fetchQuiz(completionHandler: @escaping (Result<QuizModel, Error>) -> Void){
+    func fetchQuiz(completionHandler: @escaping (Result<QuizModel, QuizError>) -> Void){
         guard let url = URL(string: fetchQuizEndpoint) else {
-            print("error with the url")
+            completionHandler(.failure(.networkError))
             return
         }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("error: \(error)")
+            if let _ = error {
+                completionHandler(.failure(.networkError))
             } else {
                 if let response = response as? HTTPURLResponse, response.statusCode >= 200 && response.statusCode < 300, let data = data {
                     
                     if let quiz: QuizModel = Parser.shared.decode(data: data) {
                         completionHandler(.success(quiz))
                     } else {
-                        
+                        completionHandler(.failure(.parsingError))
                     }
+                } else {
+                    completionHandler(.failure(.networkError))
                 }
             }
         }

@@ -22,7 +22,19 @@ class QuizViewModel {
     
     private let quizService: QuizService
     private var quizModel: QuizModel
-    private var error: Error?
+    private var error: QuizError?
+    
+    var errorMessage: String {
+        let message = "Sorry for the inconvenience... we had a "
+        switch error {
+        case .networkError:
+            return message+"network error."
+        case .parsingError:
+            return message+"data parsing error."
+        default:
+            return message+"error."
+        }
+    }
     
     var delegate: QuizViewModelDelegate?
     
@@ -86,6 +98,7 @@ class QuizViewModel {
     }
     
     func reset() {
+        error = nil
         gameStarted = false
         timer?.invalidate()
         currentTimeInSeconds = totalTimeInSeconds

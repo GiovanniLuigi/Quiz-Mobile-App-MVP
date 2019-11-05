@@ -9,6 +9,7 @@
 import UIKit
 
 class QuizViewController: UIViewController {
+
     // MARK: - Properties
     var viewModel = QuizViewModel(quizService: QuizService())
     
@@ -19,23 +20,19 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var bottomButton: QuizBottomButton!
-    
     @IBOutlet weak var bottomContainerConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomContainerView: UIView!
+    @IBOutlet weak var topStackView: UIStackView!
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWordsTableView()
         setupQuizViewModel()
-        self.hideKeyboardWhenTappedAround()
-        wordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboard(notification:)), name:UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        
+        setupKeyboard()
+        overrideUserInterfaceStyle = .light
     }
     
-    @objc func keyboard(notification:Notification) {
+    @objc func keyboard(notification: Notification) {
         guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
             return
         }
@@ -47,7 +44,6 @@ class QuizViewController: UIViewController {
         }
         
         self.view.layoutIfNeeded()
-        
     }
     
     // MARK: - Actions
@@ -62,6 +58,14 @@ class QuizViewController: UIViewController {
     }
     
     // MARK: - Private functions
+    private func setupKeyboard() {
+        self.hideKeyboardWhenTappedAround(view: topStackView)
+        wordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboard(notification:)), name:UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
     private func setupWordsTableView() {
         wordsTableView.dataSource = self
         wordsTableView.separatorInset = UIEdgeInsets.zero
@@ -90,12 +94,15 @@ class QuizViewController: UIViewController {
     }
     
     private func showErrorMessage() {
-        print("error ocurred")
+        let errorMessage = viewModel.errorMessage
+        AlertHelper.showAlert(controller: self, title: "Error", message: errorMessage, actionTitle: "Retry") { [unowned self] (_) in
+            self.reset()
+        }
     }
     
     @objc
     private func textFieldDidChange() {
-        viewModel.checkForMatch(word: wordTextField.text ?? "")
+        viewModel.checkForMatch(word: wordTextField.text ?? String.empty)
     }
     
     private func reset() {

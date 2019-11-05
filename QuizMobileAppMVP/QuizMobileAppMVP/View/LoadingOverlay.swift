@@ -25,13 +25,13 @@ class LoadingOverlay {
         loadingView.backgroundColor = UIColor.black
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 10
-
+        
         
         let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
         actInd.frame = CGRect(x: 0.0, y: 0.0, width: 10.0, height: 10.0);
         actInd.style = .large
         actInd.color = .white
-                    
+        
         actInd.center = CGPoint(x: loadingView.frame.size.width / 2,
                                 y: loadingView.frame.size.height / 2);
         
@@ -63,7 +63,9 @@ class LoadingOverlay {
     }
     
     func hideOverlay() {
-        container.isHidden = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [unowned self] in
+            self.container.isHidden = true
+        }
     }
     
 }

@@ -18,6 +18,7 @@
 		B980FFB52371EF7A003BC8B2 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FFB42371EF7A003BC8B2 /* AlertHelper.swift */; };
 		B980FFB82371F591003BC8B2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FFB72371F591003BC8B2 /* UIViewController+Extensions.swift */; };
 		B980FFBA2371F5A3003BC8B2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FFB92371F5A3003BC8B2 /* String+Extensions.swift */; };
+		B980FFBD2372198C003BC8B2 /* QuizError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FFBC2372198C003BC8B2 /* QuizError.swift */; };
 		B9CA732B2371905400FB8AE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA732A2371905400FB8AE7 /* AppDelegate.swift */; };
 		B9CA732D2371905400FB8AE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA732C2371905400FB8AE7 /* SceneDelegate.swift */; };
 		B9CA732F2371905400FB8AE7 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA732E2371905400FB8AE7 /* QuizViewController.swift */; };
@@ -52,6 +53,7 @@
 		B980FFB42371EF7A003BC8B2 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		B980FFB72371F591003BC8B2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B980FFB92371F5A3003BC8B2 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		B980FFBC2372198C003BC8B2 /* QuizError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizError.swift; sourceTree = "<group>"; };
 		B9CA73272371905400FB8AE7 /* QuizMobileAppMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizMobileAppMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CA732A2371905400FB8AE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9CA732C2371905400FB8AE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,17 @@
 				B980FFB92371F5A3003BC8B2 /* String+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B980FFBB2372189B003BC8B2 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				B980FF9D2371A489003BC8B2 /* WordTextField.swift */,
+				B9CA732E2371905400FB8AE7 /* QuizViewController.swift */,
+				B980FF9F2371AD0C003BC8B2 /* QuizBottomButton.swift */,
+				B980FFA52371B413003BC8B2 /* QuizCell.swift */,
+			);
+			path = Quiz;
 			sourceTree = "<group>";
 		};
 		B9CA731E2371905400FB8AE7 = {
@@ -167,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				B980FFA72371B597003BC8B2 /* QuizService.swift */,
+				B980FFBC2372198C003BC8B2 /* QuizError.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -182,13 +196,10 @@
 		B9CA7350237190F000FB8AE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B980FFBB2372189B003BC8B2 /* Quiz */,
 				B9CA73332371905600FB8AE7 /* Assets.xcassets */,
 				B9CA73302371905400FB8AE7 /* Main.storyboard */,
 				B9CA73352371905600FB8AE7 /* LaunchScreen.storyboard */,
-				B9CA732E2371905400FB8AE7 /* QuizViewController.swift */,
-				B980FF9D2371A489003BC8B2 /* WordTextField.swift */,
-				B980FF9F2371AD0C003BC8B2 /* QuizBottomButton.swift */,
-				B980FFA52371B413003BC8B2 /* QuizCell.swift */,
 				B980FFB22371DE01003BC8B2 /* LoadingOverlay.swift */,
 				B980FFB42371EF7A003BC8B2 /* AlertHelper.swift */,
 			);
@@ -323,6 +334,7 @@
 				B980FFA02371AD0C003BC8B2 /* QuizBottomButton.swift in Sources */,
 				B9CA732D2371905400FB8AE7 /* SceneDelegate.swift in Sources */,
 				B980FF9E2371A489003BC8B2 /* WordTextField.swift in Sources */,
+				B980FFBD2372198C003BC8B2 /* QuizError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
