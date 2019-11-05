@@ -14,7 +14,7 @@ protocol QuizViewModelDelegate: class {
     func errorToFetchQuiz()
     func didWin()
     func didLose()
-    func didScore()
+    func updateScore()
     func updateTimer()
 }
 
@@ -26,6 +26,8 @@ class QuizViewModel {
     
     var delegate: QuizViewModelDelegate?
     
+    var gameStarted: Bool = false
+    
     var answer: [String] {
         return quizModel.answer
     }
@@ -36,16 +38,20 @@ class QuizViewModel {
     
     var userAnswers: [String] = []
     
-    var timeInSeconds: TimeInterval = 300
+    let totalTimeInSeconds: TimeInterval = 300
+    
+    lazy var currentTimeInSeconds: TimeInterval = totalTimeInSeconds
     
     var formattedTime: String {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [ .minute, .second ]
         formatter.zeroFormattingBehavior = [ .pad ]
-
-        return formatter.string(from: timeInSeconds) ?? String.empty
+        
+        return formatter.string(from: currentTimeInSeconds) ?? String.empty
     }
+    
+    private var timer: Timer?
     
     init(quizService: QuizService, delegate: QuizViewModelDelegate? = nil) {
         self.quizService = quizService
@@ -68,25 +74,34 @@ class QuizViewModel {
     }
     
     func checkForMatch(word: String) {
+        if !gameStarted {return}
         if answer.contains(word), !userAnswers.contains(word) {
             userAnswers.append(word)
-            delegate?.didScore()
+            delegate?.updateScore()
             if isWinner() {
+                timer?.invalidate()
                 delegate?.didWin()
             }
         }
     }
     
     func reset() {
+        gameStarted = false
+        timer?.invalidate()
+        currentTimeInSeconds = totalTimeInSeconds
+        quizModel = QuizModel(question: String.empty, answer: [])
+        userAnswers = []
+        
         delegate?.updateTimer()
     }
     
     func start() {
+        gameStarted = true
         delegate?.updateTimer()
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [unowned self] (timer) in
-            self.timeInSeconds -= 1
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [unowned self] (timer) in
+            self.currentTimeInSeconds -= 1
             self.delegate?.updateTimer()
-            if self.timeInSeconds <= 0 {
+            if self.currentTimeInSeconds <= 0 {
                 timer.invalidate()
                 self.delegate?.didLose()
             }
@@ -94,7 +109,7 @@ class QuizViewModel {
     }
     
     private func isWinner() -> Bool {
-        return answer.isEmpty
+        return userAnswers.count == answer.count
     }
     
 }

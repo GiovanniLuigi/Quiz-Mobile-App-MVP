@@ -18,7 +18,10 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var wordsTableView: UITableView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var bottomButton: QuizBottomButton!
     
+    @IBOutlet weak var bottomContainerConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomContainerView: UIView!
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +29,36 @@ class QuizViewController: UIViewController {
         setupQuizViewModel()
         self.hideKeyboardWhenTappedAround()
         wordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboard(notification:)), name:UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+    }
+    
+    @objc func keyboard(notification:Notification) {
+        guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
+            return
+        }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification ||  notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            self.bottomContainerConstraint.constant = keyboardReact.height
+        }else{
+            self.bottomContainerConstraint.constant = 0
+        }
+        
+        self.view.layoutIfNeeded()
         
     }
     
     // MARK: - Actions
     @IBAction func didTapStartButton(_ sender: Any) {
-        viewModel.start()
+        if viewModel.gameStarted {
+            reset()
+            bottomButton.setTitle("Start", for: .normal)
+        } else {
+            viewModel.start()
+            bottomButton.setTitle("Reset", for: .normal)
+        }
     }
     
     // MARK: - Private functions
@@ -71,8 +98,14 @@ class QuizViewController: UIViewController {
         viewModel.checkForMatch(word: wordTextField.text ?? "")
     }
     
-    private func restart() {
-        
+    private func reset() {
+        viewModel.reset()
+        setupQuizViewModel()
+        bottomButton.setTitle("Start", for: .normal)
+    }
+    
+    private func updateScoreLabel() {
+        self.scoreLabel.text = "\(self.viewModel.userAnswers.count)/\(self.viewModel.answer.count)"
     }
 }
 
@@ -103,16 +136,17 @@ extension QuizViewController: QuizViewModelDelegate {
         }
     }
     
-    func didScore() {
+    func updateScore() {
         DispatchQueue.main.async { [unowned self] in
             self.wordTextField.text = ""
             self.wordsTableView.reloadData()
+            self.updateScoreLabel()
         }
     }
     
     func didWin() {
         AlertHelper.showAlert(controller: self, title: "Congratulations", message: "Good job! You found all the answers on time. Keep up with the great work.", actionTitle: "Play again") { [unowned self] (_) in
-            self.restart()
+            self.reset()
         }
     }
     
@@ -120,7 +154,7 @@ extension QuizViewController: QuizViewModelDelegate {
         let correctAnswerCount = viewModel.userAnswers.count
         let totalAnswerCount = viewModel.answer.count
         AlertHelper.showAlert(controller: self, title: "Time Finished", message: "Sorry, time is up! You got \(correctAnswerCount) out of \(totalAnswerCount) answers.", actionTitle: "Try again") { [unowned self] (_) in
-            self.restart()
+            self.reset()
         }
     }
     
@@ -134,7 +168,7 @@ extension QuizViewController: QuizViewModelDelegate {
         DispatchQueue.main.async { [unowned self] in
             self.questionLabel.text = self.viewModel.question
             self.wordsTableView.reloadData()
-            self.scoreLabel.text = "0/\(self.viewModel.answer.count)"
+            self.updateScoreLabel()
         }
     }
     

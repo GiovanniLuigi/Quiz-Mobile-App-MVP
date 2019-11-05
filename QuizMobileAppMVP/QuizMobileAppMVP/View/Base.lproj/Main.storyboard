@@ -124,8 +124,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="co1-zr-nH3">
-                                                <rect key="frame" x="213" y="0.0" width="75" height="41"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="co1-zr-nH3">
+                                                <rect key="frame" x="191" y="0.0" width="97" height="41"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="34"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -161,6 +161,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bottomButton" destination="Afs-mf-a9b" id="xHo-LJ-i1z"/>
+                        <outlet property="bottomContainerConstraint" destination="kfk-Aw-2jT" id="Gxv-5O-9hk"/>
+                        <outlet property="bottomContainerView" destination="ZFl-cj-352" id="mev-Xd-HoP"/>
                         <outlet property="questionLabel" destination="95k-cD-kpF" id="4pX-4z-kMB"/>
                         <outlet property="scoreLabel" destination="uIA-vE-bBo" id="y2P-Oe-Pmf"/>
                         <outlet property="timerLabel" destination="co1-zr-nH3" id="3fP-Ge-8Yg"/>
