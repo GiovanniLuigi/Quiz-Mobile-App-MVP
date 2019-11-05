@@ -9,7 +9,8 @@
 import UIKit
 
 class QuizViewController: UIViewController {
-
+    @IBOutlet weak var wordTextField: UITextField! 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
