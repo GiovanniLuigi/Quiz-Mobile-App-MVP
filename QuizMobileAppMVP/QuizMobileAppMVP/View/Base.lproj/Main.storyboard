@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProDisplay-Bold.ttf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+        <array key="SFProDisplay-Regular.ttf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SFProDisplay-Semibold.ttf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Quiz View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="QuizViewController" customModule="QuizMobileAppMVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9g1-Ys-GL2">
+                                <rect key="frame" x="16" y="44" width="288" height="291"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are all the java keywords?" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="95k-cD-kpF">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="81.5"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="34"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Insert Word" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ITW-5s-JJt" customClass="WordTextField" customModule="QuizMobileAppMVP" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="97.5" width="288" height="48"/>
+                                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="uzQ-CP-vch"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L6u-qC-CcZ">
+                                        <rect key="frame" x="0.0" y="161.5" width="288" height="129.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wordCell" id="wHl-ip-ipH" customClass="QuizCell" customModule="QuizMobileAppMVP" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="288" height="42.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wHl-ip-ipH" id="wcF-BG-D3e">
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="42.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pur-dE-BaV">
+                                                            <rect key="frame" x="8" y="11" width="265" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4AG-en-dAU">
+                                                            <rect key="frame" x="0.0" y="41.5" width="288" height="1"/>
+                                                            <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="bJ2-8R-6h6"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="4AG-en-dAU" firstAttribute="leading" secondItem="wcF-BG-D3e" secondAttribute="leading" id="7Up-d5-JyJ"/>
+                                                        <constraint firstItem="Pur-dE-BaV" firstAttribute="trailing" secondItem="wcF-BG-D3e" secondAttribute="trailingMargin" id="JgH-Mz-Mn5"/>
+                                                        <constraint firstItem="Pur-dE-BaV" firstAttribute="top" secondItem="wcF-BG-D3e" secondAttribute="topMargin" id="N0s-7c-1mG"/>
+                                                        <constraint firstItem="Pur-dE-BaV" firstAttribute="leading" secondItem="4AG-en-dAU" secondAttribute="leadingMargin" id="e4L-Yi-egY"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4AG-en-dAU" secondAttribute="bottom" id="gin-r7-zrs"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4AG-en-dAU" secondAttribute="trailing" id="lSl-MY-Q58"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="Pur-dE-BaV" secondAttribute="bottom" id="tpz-4j-lb2"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="wordLabel" destination="Pur-dE-BaV" id="LuN-zb-xUi"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ITW-5s-JJt" firstAttribute="top" secondItem="95k-cD-kpF" secondAttribute="bottom" constant="16" id="hqa-b4-xjD"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFl-cj-352">
+                                <rect key="frame" x="0.0" y="335" width="320" height="145"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heE-BP-eAA">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="cNe-7L-5V5"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afs-mf-a9b" customClass="QuizBottomButton" customModule="QuizMobileAppMVP" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="73" width="288" height="48"/>
+                                        <color key="backgroundColor" red="1" green="0.51372549019607838" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Jq1-nc-HNc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                        <state key="normal" title="Start">
+                                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapStartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3JM-G3-9Vs"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="30u-f5-GDr">
+                                        <rect key="frame" x="16" y="16" width="288" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uIA-vE-bBo">
+                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="41"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="34"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="co1-zr-nH3">
+                                                <rect key="frame" x="191" y="0.0" width="97" height="41"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="34"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="30u-f5-GDr" firstAttribute="leading" secondItem="ZFl-cj-352" secondAttribute="leading" constant="16" id="08v-JK-lhy"/>
+                                    <constraint firstItem="Afs-mf-a9b" firstAttribute="top" secondItem="30u-f5-GDr" secondAttribute="bottom" constant="16" id="TWf-AV-oqD"/>
+                                    <constraint firstAttribute="trailing" secondItem="heE-BP-eAA" secondAttribute="trailing" id="Xpk-ya-2jx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Afs-mf-a9b" secondAttribute="trailing" constant="16" id="a8p-7h-eJy"/>
+                                    <constraint firstItem="heE-BP-eAA" firstAttribute="top" secondItem="ZFl-cj-352" secondAttribute="top" id="aN5-2Z-k2u"/>
+                                    <constraint firstItem="Afs-mf-a9b" firstAttribute="leading" secondItem="ZFl-cj-352" secondAttribute="leading" constant="16" id="cwx-N9-5XQ"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="Afs-mf-a9b" secondAttribute="bottom" constant="16" id="dZT-MD-2fa"/>
+                                    <constraint firstAttribute="trailing" secondItem="30u-f5-GDr" secondAttribute="trailing" constant="16" id="gKm-d8-Ea8"/>
+                                    <constraint firstItem="30u-f5-GDr" firstAttribute="top" secondItem="ZFl-cj-352" secondAttribute="top" constant="16" id="leh-Wq-CdL"/>
+                                    <constraint firstItem="heE-BP-eAA" firstAttribute="leading" secondItem="ZFl-cj-352" secondAttribute="leading" id="yDt-Bu-4EO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ZFl-cj-352" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LPy-DZ-BRm"/>
+                            <constraint firstItem="9g1-Ys-GL2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="QEs-OF-ql2"/>
+                            <constraint firstItem="ZFl-cj-352" firstAttribute="top" secondItem="9g1-Ys-GL2" secondAttribute="bottom" id="XgQ-N3-HLg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9g1-Ys-GL2" secondAttribute="trailing" constant="16" id="enO-TH-f7r"/>
+                            <constraint firstAttribute="bottom" secondItem="ZFl-cj-352" secondAttribute="bottom" id="kfk-Aw-2jT"/>
+                            <constraint firstAttribute="trailing" secondItem="ZFl-cj-352" secondAttribute="trailing" id="oA8-Jc-sYe"/>
+                            <constraint firstItem="9g1-Ys-GL2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="x8J-ZY-C3T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomButton" destination="Afs-mf-a9b" id="xHo-LJ-i1z"/>
+                        <outlet property="bottomContainerConstraint" destination="kfk-Aw-2jT" id="Gxv-5O-9hk"/>
+                        <outlet property="questionLabel" destination="95k-cD-kpF" id="4pX-4z-kMB"/>
+                        <outlet property="scoreLabel" destination="uIA-vE-bBo" id="y2P-Oe-Pmf"/>
+                        <outlet property="timerLabel" destination="co1-zr-nH3" id="3fP-Ge-8Yg"/>
+                        <outlet property="topStackView" destination="9g1-Ys-GL2" id="OhJ-Hb-Gtl"/>
+                        <outlet property="wordTextField" destination="ITW-5s-JJt" id="ibL-5j-6It"/>
+                        <outlet property="wordsTableView" destination="L6u-qC-CcZ" id="I2s-Zl-IGh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="113"/>
+        </scene>
+    </scenes>
+</document>
