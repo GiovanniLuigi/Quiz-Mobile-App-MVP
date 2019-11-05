@@ -63,9 +63,7 @@ class LoadingOverlay {
     }
     
     func hideOverlay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [unowned self] in
-            self.container.isHidden = true
-        }
+        self.container.isHidden = true
     }
     
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class QuizViewController: UIViewController {
-
+    
     // MARK: - Properties
     var viewModel = QuizViewModel(quizService: QuizService())
     
@@ -83,8 +83,10 @@ class QuizViewController: UIViewController {
     }
     
     private func stopActivityIndicator() {
-        LoadingOverlay.shared.hideOverlay()
-        toggleHiddenTopElements()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [unowned self] in
+            LoadingOverlay.shared.hideOverlay()
+            self.toggleHiddenTopElements()
+        }
     }
     
     private func toggleHiddenTopElements() {
