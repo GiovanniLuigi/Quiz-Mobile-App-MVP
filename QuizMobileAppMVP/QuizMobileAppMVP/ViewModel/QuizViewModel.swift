@@ -15,6 +15,7 @@ protocol QuizViewModelDelegate: class {
     func didWin()
     func didLose()
     func didScore()
+    func updateTimer()
 }
 
 class QuizViewModel {
@@ -35,10 +36,21 @@ class QuizViewModel {
     
     var userAnswers: [String] = []
     
+    var timeInSeconds: TimeInterval = 300
+    
+    var formattedTime: String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [ .minute, .second ]
+        formatter.zeroFormattingBehavior = [ .pad ]
+
+        return formatter.string(from: timeInSeconds) ?? String.empty
+    }
+    
     init(quizService: QuizService, delegate: QuizViewModelDelegate? = nil) {
         self.quizService = quizService
         self.delegate = delegate
-        quizModel = QuizModel(question: "", answer: [])
+        quizModel = QuizModel(question: String.empty, answer: [])
     }
     
     func fetchQuiz() {
@@ -56,8 +68,7 @@ class QuizViewModel {
     }
     
     func checkForMatch(word: String) {
-        if let index = answer.firstIndex(of: word) {
-            quizModel.answer.remove(at: index)
+        if answer.contains(word), !userAnswers.contains(word) {
             userAnswers.append(word)
             delegate?.didScore()
             if isWinner() {
@@ -67,11 +78,19 @@ class QuizViewModel {
     }
     
     func reset() {
-        
+        delegate?.updateTimer()
     }
     
     func start() {
-        
+        delegate?.updateTimer()
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [unowned self] (timer) in
+            self.timeInSeconds -= 1
+            self.delegate?.updateTimer()
+            if self.timeInSeconds <= 0 {
+                timer.invalidate()
+                self.delegate?.didLose()
+            }
+        }
     }
     
     private func isWinner() -> Bool {

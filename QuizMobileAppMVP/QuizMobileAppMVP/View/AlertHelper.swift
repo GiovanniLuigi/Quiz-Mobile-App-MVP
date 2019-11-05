@@ -12,7 +12,7 @@ class AlertHelper {
     
     class func showAlert(controller: UIViewController, title: String, message: String, actionTitle: String, action: @escaping (UIAlertAction) -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: title, style: .default, handler: action)
+        let action = UIAlertAction(title: actionTitle, style: .default, handler: action)
         alert.addAction(action)
         controller.present(alert, animated: true, completion: nil)
     }

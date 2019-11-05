@@ -31,7 +31,7 @@ class QuizViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func didTapStartButton(_ sender: Any) {
-        
+        viewModel.start()
     }
     
     // MARK: - Private functions
@@ -70,6 +70,10 @@ class QuizViewController: UIViewController {
     private func textFieldDidChange() {
         viewModel.checkForMatch(word: wordTextField.text ?? "")
     }
+    
+    private func restart() {
+        
+    }
 }
 
 // MARK: - WordsTableView
@@ -93,6 +97,12 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate  {
 
 // MARK: - QuizViewModel
 extension QuizViewController: QuizViewModelDelegate {
+    func updateTimer() {
+        DispatchQueue.main.async { [unowned self] in
+            self.timerLabel.text = self.viewModel.formattedTime
+        }
+    }
+    
     func didScore() {
         DispatchQueue.main.async { [unowned self] in
             self.wordTextField.text = ""
@@ -102,12 +112,16 @@ extension QuizViewController: QuizViewModelDelegate {
     
     func didWin() {
         AlertHelper.showAlert(controller: self, title: "Congratulations", message: "Good job! You found all the answers on time. Keep up with the great work.", actionTitle: "Play again") { [unowned self] (_) in
-            
+            self.restart()
         }
     }
     
     func didLose() {
-        
+        let correctAnswerCount = viewModel.userAnswers.count
+        let totalAnswerCount = viewModel.answer.count
+        AlertHelper.showAlert(controller: self, title: "Time Finished", message: "Sorry, time is up! You got \(correctAnswerCount) out of \(totalAnswerCount) answers.", actionTitle: "Try again") { [unowned self] (_) in
+            self.restart()
+        }
     }
     
     func didFinishNetworking() {
