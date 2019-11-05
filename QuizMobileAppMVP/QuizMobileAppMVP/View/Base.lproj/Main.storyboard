@@ -45,27 +45,37 @@
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L6u-qC-CcZ">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L6u-qC-CcZ">
                                         <rect key="frame" x="0.0" y="161.5" width="288" height="129.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wordCell" id="wHl-ip-ipH" customClass="QuizCell" customModule="QuizMobileAppMVP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="288" height="43"/>
+                                                <rect key="frame" x="0.0" y="28" width="288" height="42.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wHl-ip-ipH" id="wcF-BG-D3e">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="42.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pur-dE-BaV">
-                                                            <rect key="frame" x="15" y="11" width="258" height="21"/>
+                                                            <rect key="frame" x="15" y="11" width="258" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4AG-en-dAU">
+                                                            <rect key="frame" x="0.0" y="41.5" width="288" height="1"/>
+                                                            <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="bJ2-8R-6h6"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="4AG-en-dAU" firstAttribute="leading" secondItem="wcF-BG-D3e" secondAttribute="leading" id="7Up-d5-JyJ"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="Pur-dE-BaV" secondAttribute="trailing" id="KIi-1m-PUq"/>
                                                         <constraint firstItem="Pur-dE-BaV" firstAttribute="top" secondItem="wcF-BG-D3e" secondAttribute="topMargin" id="N0s-7c-1mG"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4AG-en-dAU" secondAttribute="bottom" id="gin-r7-zrs"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4AG-en-dAU" secondAttribute="trailing" id="lSl-MY-Q58"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="Pur-dE-BaV" secondAttribute="bottom" id="tpz-4j-lb2"/>
                                                         <constraint firstItem="Pur-dE-BaV" firstAttribute="leading" secondItem="wcF-BG-D3e" secondAttribute="leadingMargin" id="y2r-Up-bEW"/>
                                                     </constraints>
@@ -151,6 +161,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="questionLabel" destination="95k-cD-kpF" id="4pX-4z-kMB"/>
                         <outlet property="scoreLabel" destination="uIA-vE-bBo" id="y2P-Oe-Pmf"/>
                         <outlet property="timerLabel" destination="co1-zr-nH3" id="3fP-Ge-8Yg"/>
                         <outlet property="wordTextField" destination="ITW-5s-JJt" id="ibL-5j-6It"/>

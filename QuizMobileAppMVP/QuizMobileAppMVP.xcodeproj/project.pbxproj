@@ -10,6 +10,11 @@
 		B980FF9E2371A489003BC8B2 /* WordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FF9D2371A489003BC8B2 /* WordTextField.swift */; };
 		B980FFA02371AD0C003BC8B2 /* QuizBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FF9F2371AD0C003BC8B2 /* QuizBottomButton.swift */; };
 		B980FFA62371B413003BC8B2 /* QuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FFA52371B413003BC8B2 /* QuizCell.swift */; };
+		B980FFA82371B597003BC8B2 /* QuizService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FFA72371B597003BC8B2 /* QuizService.swift */; };
+		B980FFAA2371B661003BC8B2 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FFA92371B661003BC8B2 /* QuizModel.swift */; };
+		B980FFAD2371B6D7003BC8B2 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FFAC2371B6D7003BC8B2 /* Parser.swift */; };
+		B980FFAF2371C0BA003BC8B2 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FFAE2371C0BA003BC8B2 /* QuizViewModel.swift */; };
+		B980FFB32371DE01003BC8B2 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980FFB22371DE01003BC8B2 /* LoadingOverlay.swift */; };
 		B9CA732B2371905400FB8AE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA732A2371905400FB8AE7 /* AppDelegate.swift */; };
 		B9CA732D2371905400FB8AE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA732C2371905400FB8AE7 /* SceneDelegate.swift */; };
 		B9CA732F2371905400FB8AE7 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA732E2371905400FB8AE7 /* QuizViewController.swift */; };
@@ -36,6 +41,11 @@
 		B980FF9D2371A489003BC8B2 /* WordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTextField.swift; sourceTree = "<group>"; };
 		B980FF9F2371AD0C003BC8B2 /* QuizBottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBottomButton.swift; sourceTree = "<group>"; };
 		B980FFA52371B413003BC8B2 /* QuizCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCell.swift; sourceTree = "<group>"; };
+		B980FFA72371B597003BC8B2 /* QuizService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizService.swift; sourceTree = "<group>"; };
+		B980FFA92371B661003BC8B2 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		B980FFAC2371B6D7003BC8B2 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		B980FFAE2371C0BA003BC8B2 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		B980FFB22371DE01003BC8B2 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		B9CA73272371905400FB8AE7 /* QuizMobileAppMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizMobileAppMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CA732A2371905400FB8AE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9CA732C2371905400FB8AE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B980FFAB2371B6C6003BC8B2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B980FFAC2371B6D7003BC8B2 /* Parser.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		B9CA731E2371905400FB8AE7 = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +114,6 @@
 				B9CA734D237190DC00FB8AE7 /* Model */,
 				B9CA734E237190E400FB8AE7 /* Service */,
 				B9CA734C237190B000FB8AE7 /* Infrastructure */,
-				B9CA73332371905600FB8AE7 /* Assets.xcassets */,
 			);
 			path = QuizMobileAppMVP;
 			sourceTree = "<group>";
@@ -113,6 +130,7 @@
 		B9CA734C237190B000FB8AE7 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				B980FFAB2371B6C6003BC8B2 /* Common */,
 				B9CA735123719DC500FB8AE7 /* Fonts */,
 				B9CA732A2371905400FB8AE7 /* AppDelegate.swift */,
 				B9CA732C2371905400FB8AE7 /* SceneDelegate.swift */,
@@ -124,6 +142,7 @@
 		B9CA734D237190DC00FB8AE7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B980FFA92371B661003BC8B2 /* QuizModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -131,6 +150,7 @@
 		B9CA734E237190E400FB8AE7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B980FFA72371B597003BC8B2 /* QuizService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -138,6 +158,7 @@
 		B9CA734F237190EA00FB8AE7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B980FFAE2371C0BA003BC8B2 /* QuizViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -145,12 +166,14 @@
 		B9CA7350237190F000FB8AE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9CA73332371905600FB8AE7 /* Assets.xcassets */,
 				B9CA73302371905400FB8AE7 /* Main.storyboard */,
 				B9CA73352371905600FB8AE7 /* LaunchScreen.storyboard */,
 				B9CA732E2371905400FB8AE7 /* QuizViewController.swift */,
 				B980FF9D2371A489003BC8B2 /* WordTextField.swift */,
 				B980FF9F2371AD0C003BC8B2 /* QuizBottomButton.swift */,
 				B980FFA52371B413003BC8B2 /* QuizCell.swift */,
+				B980FFB22371DE01003BC8B2 /* LoadingOverlay.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -270,8 +293,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B980FFA62371B413003BC8B2 /* QuizCell.swift in Sources */,
+				B980FFA82371B597003BC8B2 /* QuizService.swift in Sources */,
 				B9CA732F2371905400FB8AE7 /* QuizViewController.swift in Sources */,
+				B980FFB32371DE01003BC8B2 /* LoadingOverlay.swift in Sources */,
+				B980FFAF2371C0BA003BC8B2 /* QuizViewModel.swift in Sources */,
 				B9CA732B2371905400FB8AE7 /* AppDelegate.swift in Sources */,
+				B980FFAA2371B661003BC8B2 /* QuizModel.swift in Sources */,
+				B980FFAD2371B6D7003BC8B2 /* Parser.swift in Sources */,
 				B980FFA02371AD0C003BC8B2 /* QuizBottomButton.swift in Sources */,
 				B9CA732D2371905400FB8AE7 /* SceneDelegate.swift in Sources */,
 				B980FF9E2371A489003BC8B2 /* WordTextField.swift in Sources */,
