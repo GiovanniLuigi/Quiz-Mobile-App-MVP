@@ -1,5 +1,5 @@
 //
-//  QuizModel.swift
+//  String+Extensions.swift
 //  QuizMobileAppMVP
 //
 //  Created by Giovanni Bruno on 05/11/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct QuizModel: Codable {
-    var question: String
-    var answer: [String]
+
+extension String {
+    static let empty: String = ""
 }

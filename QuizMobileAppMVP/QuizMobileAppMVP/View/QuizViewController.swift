@@ -24,11 +24,14 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         setupWordsTableView()
         setupQuizViewModel()
+        self.hideKeyboardWhenTappedAround()
+        wordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
     }
     
     // MARK: - Actions
     @IBAction func didTapStartButton(_ sender: Any) {
-        LoadingOverlay.shared.showOverlay(in: view)
+        
     }
     
     // MARK: - Private functions
@@ -39,18 +42,33 @@ class QuizViewController: UIViewController {
     
     private func setupQuizViewModel() {
         viewModel.delegate = self
+        startActivityIndicator()
+        viewModel.fetchQuiz()
     }
     
     private func startActivityIndicator() {
-        print("loading...")
+        LoadingOverlay.shared.showOverlay(in: view)
+        toggleHiddenTopElements()
     }
     
     private func stopActivityIndicator() {
-        print("done...")
+        LoadingOverlay.shared.hideOverlay()
+        toggleHiddenTopElements()
+    }
+    
+    private func toggleHiddenTopElements() {
+        questionLabel.isHidden.toggle()
+        wordTextField.isHidden.toggle()
+        wordsTableView.isHidden.toggle()
     }
     
     private func showErrorMessage() {
         print("error ocurred")
+    }
+    
+    @objc
+    private func textFieldDidChange() {
+        viewModel.checkForMatch(word: wordTextField.text ?? "")
     }
 }
 
@@ -58,12 +76,13 @@ class QuizViewController: UIViewController {
 extension QuizViewController: UITableViewDataSource, UITableViewDelegate  {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.answer.count
+        return viewModel.userAnswers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: QuizCell.reuseIdentifier) as? QuizCell {
-            cell.wordLabel.text = "static"
+            let answer = viewModel.userAnswers[indexPath.row]
+            cell.wordLabel.text = answer
             return cell
         } else {
             return UITableViewCell()
@@ -74,6 +93,23 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate  {
 
 // MARK: - QuizViewModel
 extension QuizViewController: QuizViewModelDelegate {
+    func didScore() {
+        DispatchQueue.main.async { [unowned self] in
+            self.wordTextField.text = ""
+            self.wordsTableView.reloadData()
+        }
+    }
+    
+    func didWin() {
+        AlertHelper.showAlert(controller: self, title: "Congratulations", message: "Good job! You found all the answers on time. Keep up with the great work.", actionTitle: "Play again") { [unowned self] (_) in
+            
+        }
+    }
+    
+    func didLose() {
+        
+    }
+    
     func didFinishNetworking() {
         DispatchQueue.main.async { [unowned self] in
             self.stopActivityIndicator()
@@ -84,6 +120,7 @@ extension QuizViewController: QuizViewModelDelegate {
         DispatchQueue.main.async { [unowned self] in
             self.questionLabel.text = self.viewModel.question
             self.wordsTableView.reloadData()
+            self.scoreLabel.text = "0/\(self.viewModel.answer.count)"
         }
     }
     
@@ -94,3 +131,5 @@ extension QuizViewController: QuizViewModelDelegate {
     }
     
 }
+
+
